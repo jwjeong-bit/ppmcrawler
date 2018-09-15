@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import time
 
 region = raw_input('지역명을 입력하세요: ')
-yourKey = 'PBMA4%2FtOCUzCuslukvX5xnG3547SP4YBepkzzpX0%2F3SsKgix0b%2FEdzbc%2BNIrH4g10D1dIWdhaqa%2BpPFDSEEmAw%3D%3D'
+yourKey = 'your api key can be found at https://www.data.go.kr/'
 timefile = open("./time.tmp","r")
 
 if float(timefile.read()) < (float(time.time()) - 900) : #15분 경과시
