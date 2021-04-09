@@ -9,7 +9,7 @@ timefile = open("./time.tmp","r")
 
 if float(timefile.read()) < (float(time.time()) - 900) : #15분 경과시
     #get new data
-    print 'http get'
+    print ('http get')
     html = urlopen('http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?stationName='+ region +'&dataTerm=month&pageNo=1&numOfRows=10&ServiceKey='+ yourKey+'&ver=1.3')
     data = BeautifulSoup(html.read(), 'html.parser')
 
@@ -23,8 +23,8 @@ if float(timefile.read()) < (float(time.time()) - 900) : #15분 경과시
     timef.write(str(time.time()))
     timef.close()
 else :
-    print 'read cache'
-    print 'cache file was made at ' + timefile.read()
+    print ('read cache')
+    print ('cache file was made at ' + timefile.read())
     cachefile = open("./cache.tmp", "r")
     data = BeautifulSoup(cachefile.read(), 'html.parser')
     cachefile.close()
@@ -40,25 +40,25 @@ result_val1 = data.pm25value.get_text()
 
 print str(result_time) + '에 측정한 ' + region + '의 대기오염 정보입니다:'
 
-print '미세먼지 (PM10): ' + str(result_val) + '㎍/㎥ ',
+print ('미세먼지 (PM10): ' + str(result_val) + '㎍/㎥ '),
 
 if result_grade == '1' :
-    print "좋음"
+    print ("좋음")
 elif result_grade == '2' :
-    print "보통"
+    print ("보통")
 elif result_grade == '3' :
-    print "나쁨"
+    print ("나쁨")
 elif result_grade == '4' :
-    print "매우나쁨"
+    print ("매우나쁨")
 
 
-print '초미세먼지 (PM2.5): ' + str(result_val1) + '㎍/㎥ ',
+print ('초미세먼지 (PM2.5): ' + str(result_val1) + '㎍/㎥ '),
 
 if result_grade1 == '1' :
-    print "좋음"
+    print ("좋음")
 elif result_grade1 == '2' :
-    print "보통"
+    print ("보통")
 elif result_grade1 == '3' :
-    print "나쁨"
+    print ("나쁨")
 elif result_grade1 == '4' :
-    print "매우나쁨"
+    print ("매우나쁨")
