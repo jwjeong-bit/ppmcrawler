@@ -1,9 +1,9 @@
 # encoding: utf-8
-from urllib import urlopen
+import urlopen
 from bs4 import BeautifulSoup
 import time
 
-region = raw_input('지역명을 입력하세요: ')
+region = input('지역명을 입력하세요: ')
 yourKey = 'your api key can be found at https://www.data.go.kr/'
 timefile = open("./time.tmp","r")
 
@@ -14,7 +14,7 @@ if float(timefile.read()) < (float(time.time()) - 900) : #15분 경과시
     data = BeautifulSoup(html.read(), 'html.parser')
 
     #new cache write
-    print 'writing cache...'
+    print ('writing cache...')
     cachef = open("./cache.tmp", 'w')
     cachef.write(str(data))
     cachef.close()
@@ -38,7 +38,7 @@ result_val = data.pm10value.get_text()
 result_val1 = data.pm25value.get_text()
 
 
-print str(result_time) + '에 측정한 ' + region + '의 대기오염 정보입니다:'
+print (str (result_time) + '에 측정한 ' + region + '의 대기오염 정보입니다:')
 
 print ('미세먼지 (PM10): ' + str(result_val) + '㎍/㎥ '),
 
