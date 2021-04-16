@@ -1,5 +1,9 @@
 # encoding: utf-8
-import urlopen
+import urllib.request as ul
+import xmltodict
+import json
+import sys
+import io
 from bs4 import BeautifulSoup
 import time
 
