@@ -1,5 +1,5 @@
 # encoding: utf-8
-import urllib.request as ul
+from urllib.request import urlopen
 import xmltodict
 import json
 import sys
@@ -7,14 +7,16 @@ import io
 from bs4 import BeautifulSoup
 import time
 
+
 region = input('지역명을 입력하세요: ')
-yourKey = 'your api key can be found at https://www.data.go.kr/'
+yourKey = 'nvJVV6KxQO22I%2FM9V54%2BjEqdDHxsowmlKJ6aJSiHjqUrEZ8x4rLz4IPAJxs%2BipIRoeZw%2Fks6K%2BXFKD5HSWo2tw%3D%3D'
 timefile = open("./time.tmp","r")
 
 if float(timefile.read()) < (float(time.time()) - 900) : #15분 경과시
     #get new data
     print ('http get')
-    html = urlopen('http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?stationName='+ region +'&dataTerm=month&pageNo=1&numOfRows=10&ServiceKey='+ yourKey+'&ver=1.3')
+    html = urlopen('http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?stationName='+ region +
+                   '&dataTerm=month&pageNo=1&numOfRows=10&ServiceKey='+ nvJVV6KxQO22I%2FM9V54%2BjEqdDHxsowmlKJ6aJSiHjqUrEZ8x4rLz4IPAJxs%2BipIRoeZw%2Fks6K%2BXFKD5HSWo2tw%3D%3D+'&ver=1.3')
     data = BeautifulSoup(html.read(), 'html.parser')
 
     #new cache write
